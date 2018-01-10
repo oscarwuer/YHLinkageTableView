@@ -56,21 +56,6 @@
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView == self.oneVC.tableView ||
-        scrollView == self.twoVC.tableView ||
-        scrollView == self.threeVC.tableView) {
-        
-        if (!self.objectCanScroll) {
-            scrollView.contentOffset = CGPointZero;
-        }
-        if (scrollView.contentOffset.y <= 0) {
-            self.objectCanScroll = NO;
-            scrollView.contentOffset = CGPointZero;
-            //到顶通知父视图改变状态
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"leaveTop" object:nil];
-        }
-    }
-    
     // 为了横向滑动的时候，外层的tableView不动
     if (!self.isSelectIndex) {
         if (scrollView == self.scrollView) {
